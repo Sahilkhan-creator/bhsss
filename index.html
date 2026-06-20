@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BHSS Boys Higher Secondary School Sanzipora - Official school website for admissions, notices, academics, and campus information." />
+  <meta name="keywords" content="BHSS Sanzipora, Boys Higher Secondary School, school website, admissions, notices, academics" />
+  <meta name="author" content="BHSS Boys Higher Secondary School Sanzipora" />
+  <meta property="og:title" content="BHSS Boys Higher Secondary School Sanzipora" />
+  <meta property="og:description" content="Official school website for BHSS Boys Higher Secondary School Sanzipora." />
+  <meta property="og:type" content="website" />
+  <title>BHSS Boys Higher Secondary School Sanzipora</title>
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f7f9fc;
+      --surface-2: #eef3fb;
+      --text: #162033;
+      --muted: #5f6b7a;
+      --line: #d9e2ef;
+      --navy: #0f2340;
+      --blue: #1f5fbf;
+      --blue-2: #2f7cf6;
+      --accent: #e8b24a;
+      --shadow: 0 14px 40px rgba(16, 35, 64, 0.08);
+      --radius: 20px;
+      --radius-sm: 14px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1220;
+      --surface: #101a2d;
+      --surface-2: #15213a;
+      --text: #e9eef7;
+      --muted: #a8b3c5;
+      --line: #24334d;
+      --navy: #dfe8f6;
+      --blue: #5aa0ff;
+      --blue-2: #7db4ff;
+      --accent: #f1c76a;
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button, input, textarea { font: inherit; }
+
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, var(--navy), #09101c);
+      display: grid;
+      place-items: center;
+      z-index: 9999;
+      transition: 0.5s;
+    }
+    .loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loader .ring {
+      width: 54px;
+      height: 54px;
+      border: 3px solid rgba(255, 255, 255, 0.18);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    .loader p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 18px;
+      text-align: center;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .topbar {
+      background: #081424;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .topbar .wrap,
+    .nav .wrap,
+    .hero .wrap,
+    .section .wrap,
+    .footer .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .topbar .inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    [data-theme="dark"] .nav {
+      background: rgba(11, 18, 32, 0.82);
+    }
+    .nav .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 74px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+    .logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      flex: none;
+      box-shadow: 0 10px 24px rgba(31, 95, 191, 0.22);
+    }
+    .brand-text { min-width: 0; }
+    .brand-text strong {
+      display: block;
+      font-size: 0.98rem;
+      line-height: 1.15;
+    }
+    .brand-text span {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: 0.25s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: var(--surface);
+      color: var(--navy);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pill {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+    .pill:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: calc(100vh - 74px);
+      display: flex;
+      align-items: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&h=1080&fit=crop') center/cover no-repeat;
+      filter: brightness(0.42);
+      z-index: -2;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(7, 15, 28, 0.88), rgba(14, 34, 64, 0.64) 55%, rgba(31, 95, 191, 0.34));
+      z-index: -1;
+    }
+    .hero .content {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+      padding: 54px 0;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      margin: 18px 0 14px;
+      font-size: clamp(2.2rem, 5vw, 4.7rem);
+      line-height: 1.03;
+      color: #fff;
+      max-width: 10ch;
+    }
+    .hero p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.04rem;
+      max-width: 60ch;
+    }
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+    .btn.primary {
+      background: var(--accent);
+      color: #17233b;
+    }
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(232, 178, 74, 0.28);
+    }
+    .btn.ghost {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+    .btn.ghost:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .hero-photo {
+      border-radius: 18px;
+      overflow: hidden;
+      height: 430px;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .stats {
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .stats .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat {
+      padding: 28px 18px;
+      text-align: center;
+      border-right: 1px solid var(--line);
+    }
+    .stat:last-child {
+      border-right: none;
+    }
+    .stat strong {
+      display: block;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1;
+      color: var(--navy);
+    }
+    .stat span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: 78px 0;
+    }
+    .section.alt {
+      background: var(--surface);
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .kicker {
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 0.35rem 0 0;
+      font-size: clamp(1.6rem, 3vw, 2.55rem);
+      line-height: 1.12;
+      color: var(--navy);
+    }
+    .lead {
+      max-width: 68ch;
+      color: var(--muted);
+      margin: 12px 0 0;
+    }
+
+    .grid { display: grid; gap: 20px; }
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .pad { padding: 24px; }
+
+    .principal {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .principal .photo {
+      border-radius: 22px;
+      overflow: hidden;
+      min-height: 420px;
+    }
+    .principal .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .quote {
+      font-size: 1.05rem;
+      color: var(--text);
+      margin: 0 0 14px;
+    }
+    .sig {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .notice-list {
+      display: grid;
+      gap: 14px;
+    }
+    .notice {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--bg);
+    }
+    .badge {
+      flex: none;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(31, 95, 191, 0.12);
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .notice h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+    .notice p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .stream {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--bg);
+    }
+    .stream .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-2));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 14px;
+    }
+    .stream h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+    }
+    .stream p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .facilities {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .facility {
+      overflow: hidden;
+    }
+    .facility .img {
+      height: 190px;
+    }
+    .facility .img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .facility h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+    }
+    .facility p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 14px;
+    }
+    .gallery .item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 220px;
+    }
+    .gallery .item.large {
+      grid-row: span 2;
+      min-height: 454px;
+    }
+    .gallery .item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+    .gallery .item:hover img {
+      transform: scale(1.05);
+    }
+    .overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 16px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.72));
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, var(--navy), #17396a);
+      color: #fff;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .cta .wrap {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: center;
+    }
+    .cta p {
+      color: rgba(255, 255, 255, 0.76);
+    }
+    .mini-form {
+      display: grid;
+      gap: 12px;
+    }
+    .mini-form input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+    .mini-form input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer {
+      background: #07101d;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 44px 0 18px;
+    }
+    .footer .top {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr 1fr;
+      gap: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .footer h4 {
+      margin: 0 0 12px;
+      color: #fff;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .footer a {
+      color: rgba(255, 255, 255, 0.72);
+    }
+    .footer a:hover {
+      color: #fff;
+    }
+    .footer p, .footer li {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.68);
+    }
+    .footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .copy {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding-top: 16px;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+    }
+
+    .back {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 46px;
+      height: 46px;
+      border: none;
+      border-radius: 14px;
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(31, 95, 191, 0.28);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s;
+      z-index: 999;
+    }
+    .back.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .back:hover {
+      transform: translateY(-2px);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: 0.6s ease;
+    }
+    .reveal.on {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero .content,
+      .principal,
+      .cta .wrap,
+      .footer .top {
+        grid-template-columns: 1fr;
+      }
+      .stats .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .facilities {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+      .gallery .item.large {
+        grid-row: auto;
+        min-height: 240px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 74px;
+        background: var(--bg);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 12px;
+        box-shadow: var(--shadow);
+      }
+      .nav-links.open {
+        display: grid;
+      }
+      .menu-btn {
+        display: grid;
+        place-items: center;
+      }
+      .nav-actions .pill {
+        display: none;
+      }
+      .hero {
+        min-height: auto;
+      }
+      .hero h1 {
+        max-width: 12ch;
+      }
+      .hero .content {
+        padding: 34px 0 42px;
+      }
+      .hero-photo {
+        height: 320px;
+      }
+      .two-col,
+      .facilities,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      .stats .grid {
+        grid-template-columns: 1fr;
+      }
+      .stat {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+      .stat:last-child {
+        border-bottom: none;
+      }
+      .section {
+        padding: 60px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader" id="loader">
+    <div>
+      <div class="ring"></div>
+      <p>BHSS Boys Higher Secondary School Sanzipora</p>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="wrap inner">
+      <div>Official Website • Admissions, notices, academics, and school updates</div>
+      <div>Mon–Sat: 8:00 AM – 3:00 PM</div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="wrap inner">
+      <a class="brand" href="index.html">
+        <div class="logo">BHSS</div>
+        <div class="brand-text">
+          <strong>BHSS Boys Higher Secondary School</strong>
+          <span>Sanzipora, Shopian</span>
+        </div>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="pill" id="themeToggle" type="button">Dark mode</button>
+        <a class="pill" href="contact.html">Admissions</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="wrap content">
+      <div class="reveal">
+        <div class="eyebrow">Established for academic excellence</div>
+        <h1>BHSS Boys Higher Secondary School Sanzipora</h1>
+        <p>We provide a disciplined, supportive, and future-focused learning environment where students develop strong academics, values, and confidence for life beyond school.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="contact.html">Admission Enquiry</a>
+          <a class="btn ghost" href="#notices">Latest Notices</a>
+        </div>
+      </div>
+      <div class="hero-card reveal">
+        <div class="hero-photo">
+          <!-- Replace this with your school campus image -->
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=900&fit=crop" alt="School campus" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="wrap grid">
+      <div class="stat"><strong data-count="1200">0</strong><span>Students</span></div>
+      <div class="stat"><strong data-count="85">0</strong><span>Teachers</span></div>
+      <div class="stat"><strong data-count="98">0</strong><span>Pass Percentage</span></div>
+      <div class="stat"><strong data-count="39">0</strong><span>Years of Excellence</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap principal reveal">
+      <div class="photo card">
+        <!-- Replace this with the principal photo -->
+        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=900&h=1200&fit=crop" alt="Principal" />
+      </div>
+      <div>
+        <div class="kicker">Principal's message</div>
+        <h2>Welcome to our school community</h2>
+        <p class="quote">BHSS Boys Higher Secondary School Sanzipora is committed to academic quality, good discipline, and the overall growth of every student.</p>
+        <p class="lead">Our goal is to create an environment where students learn with purpose, grow with confidence, and develop the habits needed for responsible citizenship. We value regular study, respect, punctuality, and active participation in school life. Every classroom, event, and activity is designed to support that mission.</p>
+        <div class="sig"><strong>Principal, BHSS Boys Higher Secondary School Sanzipora</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="notices">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Latest announcements</div>
+          <h2>School notices</h2>
+        </div>
+        <p class="lead">Important updates for students, parents, and staff.</p>
+      </div>
+      <div class="notice-list reveal">
+        <article class="notice"><div class="badge">Notice</div><div><h3>Admission forms are available</h3><p>Interested students can collect admission forms from the school office during working hours.</p></div></article>
+        <article class="notice"><div class="badge">Exam</div><div><h3>Internal assessment schedule published</h3><p>The internal assessment timetable has been shared with all classes through the class representatives.</p></div></article>
+        <article class="notice"><div class="badge">Event</div><div><h3>Annual sports meet planning begins</h3><p>Students are encouraged to prepare for athletics, cricket, and cultural activities.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Academic streams</div>
+          <h2>Programs offered</h2>
+        </div>
+        <p class="lead">Balanced academic options to support different career paths.</p>
+      </div>
+      <div class="two-col reveal">
+        <div class="stream"><div class="icon">🔬</div><h3>Science</h3><p>Designed for students aiming for engineering, medicine, and advanced science studies.</p></div>
+        <div class="stream"><div class="icon">📚</div><h3>Arts & Humanities</h3><p>Built for students interested in literature, history, social studies, and public service pathways.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">School facilities</div>
+          <h2>Campus highlights</h2>
+        </div>
+        <p class="lead">Practical facilities that support learning and student well-being.</p>
+      </div>
+      <div class="facilities reveal">
+        <article class="card facility"><div class="img"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=900&h=700&fit=crop" alt="Computer lab"></div><div class="pad"><h3>Computer Lab</h3><p>Modern systems for digital literacy and practical computing.</p></div></article>
+        <article class="card facility"><div class="img"><img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=900&h=700&fit=crop" alt="Science lab"></div><div class="pad"><h3>Science Labs</h3><p>Dedicated lab spaces for experiments and practical demonstrations.</p></div></article>
+        <article class="card facility"><div class="img"><img src="https://images.unsplash.com/photo-1509062522246-375597c2722a?w=900&h=700&fit=crop" alt="Library"></div><div class="pad"><h3>Library</h3><p>A quiet reading space with reference books and study material.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">School gallery</div>
+          <h2>Campus moments</h2>
+        </div>
+        <p class="lead">Replace these placeholder images with real school photos when ready.</p>
+      </div>
+      <div class="gallery reveal">
+        <div class="item large"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&h=1200&fit=crop" alt="Campus" /><div class="overlay">Campus view</div></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&h=900&fit=crop" alt="Classroom" /><div class="overlay">Classroom</div></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=900&h=900&fit=crop" alt="Event" /><div class="overlay">School event</div></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&h=900&fit=crop" alt="Computer learning" /><div class="overlay">Computer lab</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker" style="color:#b7d3ff">Admissions</div>
+        <h2 style="color:#fff">Bring your child to a school that values discipline and growth.</h2>
+        <p>Contact the office for admission details, required documents, and school timing information.</p>
+      </div>
+      <form class="mini-form reveal">
+        <input type="text" placeholder="Student name" />
+        <input type="tel" placeholder="Parent contact number" />
+        <button class="btn primary" type="button">Send enquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap top">
+      <div>
+        <h4>About</h4>
+        <!-- Replace this school description -->
+        <p>BHSS Boys Higher Secondary School Sanzipora serves students with a steady focus on academics, character, and responsibility.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul><li><a href="about.html">About Us</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Academics</h4>
+        <ul><li><a href="#">Science Stream</a></li><li><a href="#">Arts Stream</a></li><li><a href="#">Notices</a></li></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <!-- Replace these contact details -->
+        <p>Sanzipora, Shopian, Jammu & Kashmir</p>
+        <p>Phone: +91 00000 00000</p>
+        <p>Email: info@bhsssanzipora.edu.in</p>
+      </div>
+    </div>
+    <div class="wrap copy"><span>© 2026 BHSS Boys Higher Secondary School Sanzipora</span><span>Official school website</span></div>
+  </footer>
+
+  <button class="back" id="backTop" type="button" aria-label="Back to top">↑</button>
+
+  <script>
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', () => setTimeout(() => loader.classList.add('hidden'), 700));
+
+    const themeToggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    themeToggle.textContent = saved === 'dark' ? 'Light mode' : 'Dark mode';
+    themeToggle.onclick = () => {
+      const t = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('theme', t);
+      themeToggle.textContent = t === 'dark' ? 'Light mode' : 'Dark mode';
+    };
+
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.onclick = () => navLinks.classList.toggle('open');
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const back = document.getElementById('backTop');
+    window.addEventListener('scroll', () => back.classList.toggle('visible', window.scrollY > 300));
+    back.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('on');
+    }), { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = +el.dataset.count;
+      const io2 = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (entry.isIntersecting && !el.dataset.done) {
+          el.dataset.done = '1';
+          let cur = 0;
+          const step = Math.max(1, Math.ceil(target / 90));
+          const t = setInterval(() => {
+            cur += step;
+            if (cur >= target) {
+              cur = target;
+              clearInterval(t);
+            }
+            el.textContent = cur;
+          }, 16);
+        }
+      }), { threshold: 0.4 });
+      io2.observe(el);
+    });
+  </script>
+</body>
+</html>
