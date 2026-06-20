@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – BHSS Boys Higher Secondary School Sanzipora</title>
+  <meta name="description" content="Learn about the history, vision, mission, faculty, and values of BHSS Boys Higher Secondary School Sanzipora." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0a1628; --blue: #1a3a6b; --sky: #2563eb; --accent: #f59e0b; --gold: #d4a017;
+      --white: #ffffff; --off-white: #f8fafc; --gray-100: #f1f5f9; --gray-200: #e2e8f0;
+      --gray-400: #94a3b8; --gray-600: #475569; --gray-800: #1e293b;
+      --glass-bg: rgba(255,255,255,0.08); --glass-border: rgba(255,255,255,0.15);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08); --shadow-md: 0 4px 24px rgba(10,22,40,0.12);
+      --shadow-lg: 0 12px 48px rgba(10,22,40,0.18);
+      --radius: 16px; --radius-sm: 8px;
+      --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    [data-theme="dark"] {
+      --white: #0f172a; --off-white: #1e293b; --gray-100: #1e293b; --gray-200: #334155;
+      --gray-600: #94a3b8; --gray-800: #f1f5f9; --shadow-md: 0 4px 24px rgba(0,0,0,0.4);
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--gray-800); line-height: 1.6; overflow-x: hidden; transition: background 0.3s, color 0.3s; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* LOADING */
+    #loader { position:fixed;inset:0;z-index:9999;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.6s,visibility 0.6s; }
+    #loader.hidden{opacity:0;visibility:hidden;}
+    .loader-crest{width:72px;height:72px;border:4px solid rgba(255,255,255,0.15);border-top-color:var(--accent);border-radius:50%;animation:spin 0.9s linear infinite;}
+    .loader-text{color:rgba(255,255,255,0.7);font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;margin-top:20px;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:1000;background:rgba(10,22,40,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06);padding:0 5%;}
+    .nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px;}
+    .nav-brand{display:flex;align-items:center;gap:14px;}
+    .nav-logo{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--accent));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:white;flex-shrink:0;}
+    .nav-name{color:white;}
+    .nav-name strong{display:block;font-size:0.95rem;font-weight:600;}
+    .nav-name span{font-size:0.72rem;color:rgba(255,255,255,0.5);letter-spacing:0.05em;}
+    .nav-links{display:flex;align-items:center;gap:6px;}
+    .nav-links a{color:rgba(255,255,255,0.75);font-size:0.875rem;font-weight:500;padding:8px 14px;border-radius:var(--radius-sm);transition:var(--transition);position:relative;}
+    .nav-links a:hover,.nav-links a.active{color:white;background:rgba(255,255,255,0.08);}
+    .nav-links a.active::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:20px;height:2px;background:var(--accent);border-radius:2px;}
+    .nav-actions{display:flex;align-items:center;gap:10px;}
+    .btn-dark-toggle{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:white;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:var(--transition);}
+    .btn-dark-toggle:hover{background:rgba(255,255,255,0.16);}
+    .btn-primary{background:var(--accent);color:var(--navy);font-size:0.82rem;font-weight:700;padding:9px 20px;border-radius:50px;border:none;cursor:pointer;letter-spacing:0.03em;text-transform:uppercase;transition:var(--transition);}
+    .btn-primary:hover{background:var(--gold);transform:translateY(-1px);}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    .nav-hamburger span{width:24px;height:2px;background:white;border-radius:2px;transition:var(--transition);}
+    .mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:var(--navy);padding:100px 5% 40px;flex-direction:column;gap:8px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{color:rgba(255,255,255,0.85);font-size:1.2rem;font-weight:500;padding:14px 20px;border-radius:var(--radius-sm);border-left:3px solid transparent;transition:var(--transition);}
+    .mobile-menu a:hover{border-left-color:var(--accent);background:rgba(255,255,255,0.05);color:white;}
+    .mobile-close{position:absolute;top:24px;right:5%;background:rgba(255,255,255,0.08);border:none;color:white;width:44px;height:44px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+
+    /* PAGE HERO */
+    .page-hero{
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 70%);
+      padding: 100px 5% 80px; position: relative; overflow: hidden;
+    }
+    .page-hero::before{
+      content:''; position:absolute; top:-100px; right:-100px;
+      width:500px; height:500px;
+      background: radial-gradient(circle, rgba(37,99,235,0.25) 0%, transparent 70%);
+      border-radius:50%;
+    }
+    .page-hero::after{
+      content:''; position:absolute; bottom:-80px; left:-80px;
+      width:400px; height:400px;
+      background: radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 70%);
+      border-radius:50%;
+    }
+    .page-hero-inner{max-width:1280px;margin:0 auto;position:relative;z-index:1;}
+    .breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:24px;font-size:0.82rem;}
+    .breadcrumb a{color:rgba(255,255,255,0.5);transition:var(--transition);}
+    .breadcrumb a:hover{color:white;}
+    .breadcrumb span{color:rgba(255,255,255,0.3);}
+    .breadcrumb strong{color:var(--accent);}
+    .page-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;color:white;line-height:1.1;margin-bottom:16px;}
+    .page-subtitle{color:rgba(255,255,255,0.6);font-size:1.05rem;max-width:540px;line-height:1.7;}
+
+    /* SHARED SECTION */
+    section{padding:88px 5%;}
+    .section-inner{max-width:1280px;margin:0 auto;}
+    .section-tag{display:inline-block;color:var(--sky);font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;position:relative;padding-left:28px;}
+    .section-tag::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:18px;height:2px;background:var(--sky);}
+    .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:var(--gray-800);line-height:1.15;margin-bottom:16px;}
+    .section-subtitle{color:var(--gray-600);font-size:1rem;max-width:560px;line-height:1.75;margin-bottom:48px;}
+    [data-theme="dark"] .section-title{color:#f1f5f9;}
+    [data-theme="dark"] .section-subtitle{color:#94a3b8;}
+
+    /* HISTORY */
+    .history{background:var(--off-white);}
+    [data-theme="dark"] .history{background:#0f172a;}
+    .history-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+    /* ===== REPLACE SCHOOL HISTORY IMAGE: Change background-image URL below ===== */
+    .history-img{
+      border-radius:24px;overflow:hidden;height:440px;position:relative;
+      box-shadow:var(--shadow-lg);
+    }
+    .history-img div{
+      width:100%;height:100%;
+      background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80');
+      background-size:cover;background-position:center;
+    }
+    .history-badge{
+      position:absolute;bottom:24px;left:24px;
+      background:rgba(10,22,40,0.85);backdrop-filter:blur(8px);
+      border:1px solid rgba(255,255,255,0.12);
+      padding:12px 20px;border-radius:12px;color:white;
+    }
+    .history-badge strong{display:block;font-size:1.6rem;font-weight:900;color:var(--accent);font-family:'Playfair Display',serif;}
+    .history-badge span{font-size:0.78rem;opacity:0.6;letter-spacing:0.05em;}
+    .history-content p{color:var(--gray-600);line-height:1.85;margin-bottom:20px;font-size:0.96rem;}
+    [data-theme="dark"] .history-content p{color:#94a3b8;}
+
+    /* VISION MISSION */
+    .vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px;}
+    .vm-card{
+      border-radius:var(--radius);padding:40px;
+      position:relative;overflow:hidden;
+    }
+    .vm-card.vision{background:linear-gradient(135deg,var(--navy),var(--blue));}
+    .vm-card.mission{background:linear-gradient(135deg,#1a4d2e,#166534);}
+    .vm-card::before{
+      content:'';position:absolute;top:-30px;right:-30px;
+      width:150px;height:150px;border-radius:50%;
+      background:rgba(255,255,255,0.05);
+    }
+    .vm-icon{font-size:2.4rem;margin-bottom:20px;}
+    .vm-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:white;margin-bottom:16px;}
+    .vm-text{color:rgba(255,255,255,0.7);line-height:1.8;font-size:0.95rem;}
+    .vm-points{margin-top:20px;display:flex;flex-direction:column;gap:10px;}
+    .vm-point{display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,0.75);font-size:0.88rem;}
+    .vm-point::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+    /* VALUES */
+    .values{background:var(--off-white);}
+    [data-theme="dark"] .values{background:#0f172a;}
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .value-card{
+      background:var(--white);border-radius:var(--radius);padding:36px 28px;
+      border:1px solid var(--gray-200);transition:var(--transition);text-align:center;
+      position:relative;overflow:hidden;
+    }
+    [data-theme="dark"] .value-card{background:#1e293b;border-color:#334155;}
+    .value-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:var(--sky);}
+    .value-card::after{
+      content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+      background:linear-gradient(to right,var(--sky),var(--accent));
+      transform:scaleX(0);transform-origin:left;transition:var(--transition);
+    }
+    .value-card:hover::after{transform:scaleX(1);}
+    .value-icon{font-size:2.6rem;margin-bottom:18px;}
+    .value-name{font-weight:700;font-size:1.05rem;color:var(--gray-800);margin-bottom:12px;}
+    [data-theme="dark"] .value-name{color:#e2e8f0;}
+    .value-desc{font-size:0.85rem;color:var(--gray-600);line-height:1.7;}
+    [data-theme="dark"] .value-desc{color:#94a3b8;}
+
+    /* PRINCIPAL FULL */
+    .principal-full-grid{display:grid;grid-template-columns:320px 1fr;gap:64px;align-items:start;}
+    /* ===== REPLACE PRINCIPAL PHOTO: Change inside .principal-photo-box ===== */
+    .principal-photo-box{
+      border-radius:20px;overflow:hidden;
+      box-shadow:var(--shadow-lg); position:sticky; top:90px;
+    }
+    .principal-photo-img{
+      width:100%;aspect-ratio:3/4;
+      background:linear-gradient(135deg,var(--blue),var(--sky));
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+      color:rgba(255,255,255,0.6);font-size:0.82rem;letter-spacing:0.05em;
+    }
+    .principal-photo-img svg{width:72px;height:72px;opacity:0.4;}
+    .principal-info-badge{
+      background:linear-gradient(135deg,var(--navy),var(--blue));
+      padding:24px;
+    }
+    .principal-info-badge strong{display:block;color:white;font-size:1.05rem;font-weight:700;margin-bottom:4px;}
+    .principal-info-badge span{color:var(--accent);font-size:0.8rem;letter-spacing:0.05em;}
+    .principal-message-content{padding:8px 0;}
+    .pm-quote{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:600;
+      color:var(--gray-800);line-height:1.5;margin-bottom:28px;
+      border-left:4px solid var(--sky);padding-left:24px;
+    }
+    [data-theme="dark"] .pm-quote{color:#f1f5f9;}
+    .pm-body{color:var(--gray-600);line-height:1.85;margin-bottom:20px;font-size:0.96rem;}
+    [data-theme="dark"] .pm-body{color:#94a3b8;}
+
+    /* FACULTY */
+    .faculty{background:var(--off-white);}
+    [data-theme="dark"] .faculty{background:#0f172a;}
+    .faculty-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+    .faculty-card{
+      background:var(--white);border-radius:var(--radius);
+      overflow:hidden;border:1px solid var(--gray-200);
+      box-shadow:var(--shadow-sm);transition:var(--transition);text-align:center;
+    }
+    [data-theme="dark"] .faculty-card{background:#1e293b;border-color:#334155;}
+    .faculty-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);}
+    /* ===== REPLACE FACULTY PHOTOS: Add img tags inside .faculty-photo divs ===== */
+    .faculty-photo{
+      height:200px;
+      background:linear-gradient(135deg,var(--blue),var(--sky));
+      display:flex;align-items:center;justify-content:center;
+      font-size:3rem;color:rgba(255,255,255,0.4);
+    }
+    .faculty-body{padding:20px 16px;}
+    .faculty-name{font-weight:700;font-size:0.95rem;color:var(--gray-800);margin-bottom:4px;}
+    [data-theme="dark"] .faculty-name{color:#e2e8f0;}
+    .faculty-subject{color:var(--sky);font-size:0.78rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px;}
+    .faculty-qual{font-size:0.78rem;color:var(--gray-400);}
+
+    /* INFRASTRUCTURE */
+    .infra-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+    /* ===== REPLACE INFRASTRUCTURE IMAGE: Change background-image URL below ===== */
+    .infra-img{
+      height:440px;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);
+    }
+    .infra-img div{
+      width:100%;height:100%;
+      background-image:url('https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80');
+      background-size:cover;background-position:center;
+    }
+    .infra-list{display:flex;flex-direction:column;gap:16px;}
+    .infra-item{
+      display:flex;align-items:flex-start;gap:18px;
+      padding:20px;border-radius:var(--radius-sm);
+      background:var(--off-white);border:1px solid var(--gray-200);
+      transition:var(--transition);
+    }
+    [data-theme="dark"] .infra-item{background:#1e293b;border-color:#334155;}
+    .infra-item:hover{border-color:var(--sky);transform:translateX(4px);}
+    .infra-icon{font-size:1.6rem;flex-shrink:0;margin-top:2px;}
+    .infra-item-title{font-weight:700;font-size:0.92rem;color:var(--gray-800);margin-bottom:4px;}
+    [data-theme="dark"] .infra-item-title{color:#e2e8f0;}
+    .infra-item-desc{font-size:0.82rem;color:var(--gray-600);line-height:1.6;}
+    [data-theme="dark"] .infra-item-desc{color:#94a3b8;}
+
+    /* TIMELINE */
+    .timeline-section{background:var(--navy);padding:88px 5%;}
+    .timeline-title-tag{display:inline-block;color:rgba(255,255,255,0.4);font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;padding-left:28px;position:relative;}
+    .timeline-title-tag::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:18px;height:2px;background:rgba(255,255,255,0.3);}
+    .timeline-main-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:white;margin-bottom:56px;line-height:1.15;}
+    .timeline{position:relative;max-width:800px;margin:0 auto;padding-left:32px;}
+    .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:rgba(255,255,255,0.08);}
+    .timeline-item{position:relative;padding-bottom:48px;}
+    .timeline-item:last-child{padding-bottom:0;}
+    .timeline-dot{
+      position:absolute;left:-39px;top:4px;
+      width:14px;height:14px;border-radius:50%;
+      background:var(--accent);border:3px solid var(--navy);
+      box-shadow:0 0 0 3px rgba(245,158,11,0.2);
+    }
+    .timeline-year{color:var(--accent);font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;}
+    .timeline-item-title{color:white;font-weight:700;font-size:1rem;margin-bottom:8px;line-height:1.4;}
+    .timeline-item-desc{color:rgba(255,255,255,0.55);font-size:0.87rem;line-height:1.7;}
+
+    /* FOOTER */
+    footer{background:#050d1a;color:rgba(255,255,255,0.6);padding:72px 5% 0;}
+    .footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,0.08);}
+    .footer-logo-wrap{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+    .footer-logo{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--accent));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;color:white;font-size:1rem;}
+    .footer-name{color:white;font-weight:700;font-size:0.95rem;}
+    .footer-desc{font-size:0.85rem;line-height:1.75;margin-bottom:28px;}
+    .footer-social{display:flex;gap:10px;}
+    .social-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);font-size:0.85rem;font-weight:700;transition:var(--transition);cursor:pointer;}
+    .social-btn:hover{background:var(--sky);color:white;border-color:var(--sky);}
+    .footer-col h4{color:white;font-size:0.88rem;font-weight:700;margin-bottom:20px;letter-spacing:0.06em;text-transform:uppercase;}
+    .footer-col ul{display:flex;flex-direction:column;gap:10px;}
+    .footer-col ul li a{font-size:0.84rem;transition:var(--transition);}
+    .footer-col ul li a:hover{color:white;padding-left:6px;}
+    .footer-contact li{display:flex;gap:10px;font-size:0.84rem;align-items:flex-start;}
+    .footer-contact li span:first-child{opacity:0.5;flex-shrink:0;margin-top:2px;}
+    .footer-bottom{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:24px 0;font-size:0.8rem;}
+    .footer-bottom a{color:var(--accent);}
+
+    /* BACK TO TOP */
+    #back-to-top{position:fixed;bottom:32px;right:32px;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--sky);color:white;border:none;cursor:pointer;font-size:1.1rem;box-shadow:0 8px 24px rgba(37,99,235,0.4);opacity:0;pointer-events:none;transition:var(--transition);display:flex;align-items:center;justify-content:center;}
+    #back-to-top.visible{opacity:1;pointer-events:auto;}
+    #back-to-top:hover{background:var(--blue);transform:translateY(-3px);}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .history-grid,.vm-grid,.infra-grid,.principal-full-grid{grid-template-columns:1fr;}
+      .principal-photo-box{position:static;max-width:360px;}
+      .faculty-grid{grid-template-columns:repeat(2,1fr);}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:40px;}
+    }
+    @media(max-width:768px){
+      .nav-links,.nav-actions .btn-primary{display:none;}
+      .nav-hamburger{display:flex;}
+      .values-grid{grid-template-columns:1fr;}
+      .footer-grid{grid-template-columns:1fr;}
+      .footer-bottom{flex-direction:column;gap:12px;text-align:center;}
+      section{padding:64px 5%;}
+    }
+    @media(max-width:480px){
+      .faculty-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-crest"></div>
+  <p class="loader-text">BHSS Sanzipora</p>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo">B</div>
+      <div class="nav-name"><strong>BHSS Sanzipora</strong><span>Boys Higher Secondary School</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-dark-toggle" id="darkToggle">🌙</button>
+      <a href="contact.html" class="btn-primary">Admissions</a>
+      <button class="nav-hamburger" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose">✕</button>
+  <a href="index.html">🏠 Home</a>
+  <a href="about.html">🏫 About</a>
+  <a href="events.html">📅 Events</a>
+  <a href="contact.html">📞 Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <strong>About Us</strong>
+    </div>
+    <h1 class="page-title">About Our School</h1>
+    <p class="page-subtitle">Decades of excellence in education, character, and community — rooted in the heart of Kashmir.</p>
+  </div>
+</div>
+
+<!-- SCHOOL HISTORY -->
+<section class="history">
+  <div class="section-inner">
+    <div class="history-grid">
+      <div class="history-img reveal">
+        <!-- ===== REPLACE SCHOOL HISTORY IMAGE: Change the background-image URL in CSS ===== -->
+        <div></div>
+        <div class="history-badge">
+          <strong>45+</strong>
+          <span>Years of Legacy</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="section-tag">Our Heritage</div>
+        <h2 class="section-title">A Legacy of Learning &amp; Leadership</h2>
+        <!-- ===== REPLACE SCHOOL HISTORY: Update paragraphs below with actual history ===== -->
+        <div class="history-content">
+          <p>BHSS Boys Higher Secondary School Sanzipora was established with a singular mission: to provide quality secondary education to the youth of the Sanzipora region and surrounding areas of Shopian district. Founded in an era when quality schooling was scarce in rural Kashmir, the institution has since grown to become one of the most respected educational establishments in the district.</p>
+          <p>Over the decades, the school has produced thousands of alumni who have gone on to serve in distinguished capacities — from civil servants and medical professionals to engineers, educators, and entrepreneurs. These alumni are the living testament to the enduring impact of BHSS Sanzipora.</p>
+          <p>The institution has continuously evolved — upgrading its infrastructure, expanding its faculty, and modernising its curriculum — always keeping pace with the demands of contemporary education while preserving the core values of discipline, integrity, and academic rigour that define its identity.</p>
+          <p>Today, BHSS Sanzipora stands as a pillar of the community, not just as a place of learning, but as an institution that shapes character, builds futures, and nurtures the potential within every student who passes through its gates.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION & MISSION -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">Our Purpose</div>
+    <h2 class="section-title">Vision &amp; Mission</h2>
+    <p class="section-subtitle">The principles that guide everything we do at BHSS Sanzipora.</p>
+    <div class="vm-grid reveal">
+      <div class="vm-card vision">
+        <div class="vm-icon">🎯</div>
+        <div class="vm-title">Our Vision</div>
+        <div class="vm-text">To be the most trusted centre of holistic education in Kashmir — producing graduates who are intellectually accomplished, morally grounded, and socially responsible contributors to a progressive society.</div>
+        <div class="vm-points">
+          <div class="vm-point">Academic excellence as the foundation of every student's journey</div>
+          <div class="vm-point">Character development alongside intellectual growth</div>
+          <div class="vm-point">Creating leaders equipped for a rapidly changing world</div>
+        </div>
+      </div>
+      <div class="vm-card mission">
+        <div class="vm-icon">🚀</div>
+        <div class="vm-title">Our Mission</div>
+        <div class="vm-text">To deliver high-quality education in a nurturing, inclusive environment — fostering critical thinking, creativity, and a love of lifelong learning in every student we serve.</div>
+        <div class="vm-points">
+          <div class="vm-point">Provide rigorous, curriculum-aligned academic instruction</div>
+          <div class="vm-point">Cultivate curiosity, discipline, and ethical leadership</div>
+          <div class="vm-point">Support students through guidance, mentorship, and care</div>
+          <div class="vm-point">Engage families and community as partners in education</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOOL VALUES -->
+<section class="values">
+  <div class="section-inner">
+    <div class="section-tag">Core Principles</div>
+    <h2 class="section-title">Our Core Values</h2>
+    <p class="section-subtitle">The beliefs that shape the culture, conduct, and character of our institution.</p>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon">🏅</div>
+        <div class="value-name">Excellence</div>
+        <div class="value-desc">We hold ourselves to the highest standards in academics, conduct, and every endeavour — never settling for less than our best.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">⚖️</div>
+        <div class="value-name">Integrity</div>
+        <div class="value-desc">Honesty and ethical conduct are non-negotiable. We build trust through transparency and consistency in all our actions.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">🤝</div>
+        <div class="value-name">Respect</div>
+        <div class="value-desc">Every student, teacher, and stakeholder is treated with dignity. Mutual respect is the cornerstone of our community.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">💡</div>
+        <div class="value-name">Innovation</div>
+        <div class="value-desc">We embrace new ideas, methodologies, and technologies that enhance learning and prepare students for tomorrow's challenges.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">🌱</div>
+        <div class="value-name">Growth</div>
+        <div class="value-desc">We believe every student has boundless potential. Our environment is designed to nurture continuous personal and academic growth.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">🫂</div>
+        <div class="value-name">Community</div>
+        <div class="value-desc">We are deeply rooted in the Sanzipora community and committed to contributing positively to society through education and service.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPAL FULL MESSAGE -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">Leadership</div>
+    <h2 class="section-title">Principal's Message</h2>
+    <div class="principal-full-grid">
+      <div class="principal-photo-box reveal">
+        <!-- ===== REPLACE PRINCIPAL PHOTO: Replace the div below with an <img> tag pointing to actual photo ===== -->
+        <div class="principal-photo-img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+          <span>Principal's Photo</span>
+        </div>
+        <!-- ===== REPLACE PRINCIPAL NAME: Update name and designation below ===== -->
+        <div class="principal-info-badge">
+          <strong>Mr. [Principal Name]</strong>
+          <span>M.A., B.Ed. | Principal, BHSS Sanzipora</span>
+        </div>
+      </div>
+      <div class="principal-message-content reveal">
+        <!-- ===== REPLACE PRINCIPAL MESSAGE: Update the full message below ===== -->
+        <p class="pm-quote">
+          "The purpose of education is not to fill a bucket, but to light a fire — and here at BHSS Sanzipora, we light that fire in the heart of every young man who walks through our doors."
+        </p>
+        <p class="pm-body">Dear Students, Parents, and Valued Members of Our Community,</p>
+        <p class="pm-body">It is both an honour and a privilege to lead this exceptional institution. BHSS Boys Higher Secondary School Sanzipora has, over its distinguished history, been a transformative force in this region — not just educating minds, but moulding character, instilling values, and inspiring ambition in generation after generation of young men.</p>
+        <p class="pm-body">We live in an era of extraordinary opportunity. The world is changing faster than ever before — new technologies, new professions, and new challenges emerge with each passing year. At BHSS Sanzipora, our commitment is to prepare our students not merely for examinations, but for life itself. Our teachers don't just impart knowledge; they mentor, motivate, and model the kind of person each student can aspire to become.</p>
+        <p class="pm-body">My door is always open to students who need guidance and to parents who wish to discuss their child's progress. We are a community — and it is only together, in partnership, that we can truly unlock the potential of every student entrusted to our care.</p>
+        <p class="pm-body">I invite you to be an active and enthusiastic participant in the life of our school. Together, let us build something magnificent.</p>
+        <p class="pm-body" style="color:var(--sky);font-weight:600;">— Mr. [Principal Name], Principal</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section class="faculty">
+  <div class="section-inner">
+    <div class="section-tag">Our Educators</div>
+    <h2 class="section-title">Meet Our Faculty</h2>
+    <p class="section-subtitle">A team of dedicated, qualified, and passionate educators committed to student excellence.</p>
+    <div class="faculty-grid">
+      <!-- ===== REPLACE FACULTY: Update names, subjects, qualifications, and photos below ===== -->
+      <div class="faculty-card reveal">
+        <div class="faculty-photo">👨‍🏫</div>
+        <div class="faculty-body">
+          <div class="faculty-name">Mr. [Teacher Name]</div>
+          <div class="faculty-subject">Physics</div>
+          <div class="faculty-qual">M.Sc. Physics, B.Ed. | 15 yrs exp.</div>
+        </div>
+      </div>
+      <div class="faculty-card reveal">
+        <div class="faculty-photo">👨‍🏫</div>
+        <div class="faculty-body">
+          <div class="faculty-name">Mr. [Teacher Name]</div>
+          <div class="faculty-subject">Chemistry</div>
+          <div class="faculty-qual">M.Sc. Chemistry, B.Ed. | 12 yrs exp.</div>
+        </div>
+      </div>
+      <div class="faculty-card reveal">
+        <div class="faculty-photo">👨‍🏫</div>
+        <div class="faculty-body">
+          <div class="faculty-name">Mr. [Teacher Name]</div>
+          <div class="faculty-subject">Mathematics</div>
+          <div class="faculty-qual">M.Sc. Maths, B.Ed. | 18 yrs exp.</div>
+        </div>
+      </div>
+      <div class="faculty-card reveal">
+        <div class="faculty-photo">👨‍🏫</div>
+        <div class="faculty-body">
+          <div class="faculty-name">Mr. [Teacher Name]</div>
+          <div class="faculty-subject">English</div>
+          <div class="faculty-qual">M.A. English, B.Ed. | 10 yrs exp.</div>
+        </div>
+      </div>
+      <div class="faculty-card reveal">
+        <div class="faculty-photo">👨‍🏫</div>
+        <div class="faculty-body">
+          <div class="faculty-name">Mr. [Teacher Name]</div>
+          <div class="faculty-subject">Biology</div>
+          <div class="faculty-qual">M.Sc. Biology, B.Ed. | 14 yrs exp.</div>
+        </div>
+      </div>
+      <div class="faculty-card reveal">
+        <div class="faculty-photo">👨‍🏫</div>
+        <div class="faculty-body">
+          <div class="faculty-name">Mr. [Teacher Name]</div>
+          <div class="faculty-subject">History</div>
+          <div class="faculty-qual">M.A. History, B.Ed. | 11 yrs exp.</div>
+        </div>
+      </div>
+      <div class="faculty-card reveal">
+        <div class="faculty-photo">👨‍🏫</div>
+        <div class="faculty-body">
+          <div class="faculty-name">Mr. [Teacher Name]</div>
+          <div class="faculty-subject">Accountancy</div>
+          <div class="faculty-qual">M.Com, B.Ed. | 9 yrs exp.</div>
+        </div>
+      </div>
+      <div class="faculty-card reveal">
+        <div class="faculty-photo">👨‍🏫</div>
+        <div class="faculty-body">
+          <div class="faculty-name">Mr. [Teacher Name]</div>
+          <div class="faculty-subject">Computer Science</div>
+          <div class="faculty-qual">MCA, B.Ed. | 8 yrs exp.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFRASTRUCTURE -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">Campus</div>
+    <h2 class="section-title">Our Infrastructure</h2>
+    <div class="infra-grid">
+      <div class="infra-img reveal">
+        <!-- ===== REPLACE INFRASTRUCTURE IMAGE: Change background-image URL in CSS ===== -->
+        <div></div>
+      </div>
+      <div class="infra-list reveal">
+        <div class="infra-item">
+          <div class="infra-icon">🏛️</div>
+          <div>
+            <div class="infra-item-title">Modern Classrooms</div>
+            <div class="infra-item-desc">30+ spacious classrooms equipped with digital whiteboards, proper ventilation, and ergonomic seating.</div>
+          </div>
+        </div>
+        <div class="infra-item">
+          <div class="infra-icon">🔬</div>
+          <div>
+            <div class="infra-item-title">Laboratories</div>
+            <div class="infra-item-desc">Fully equipped Physics, Chemistry, Biology, and Computer Science labs for hands-on practical learning.</div>
+          </div>
+        </div>
+        <div class="infra-item">
+          <div class="infra-icon">📚</div>
+          <div>
+            <div class="infra-item-title">Central Library</div>
+            <div class="infra-item-desc">Over 10,000 books, periodicals, and digital resources for academic and competitive exam preparation.</div>
+          </div>
+        </div>
+        <div class="infra-item">
+          <div class="infra-icon">🏃</div>
+          <div>
+            <div class="infra-item-title">Playground &amp; Sports Facilities</div>
+            <div class="infra-item-desc">A large multi-purpose sports ground for cricket, football, athletics, and other competitive sports.</div>
+          </div>
+        </div>
+        <div class="infra-item">
+          <div class="infra-icon">🎭</div>
+          <div>
+            <div class="infra-item-title">Assembly &amp; Cultural Hall</div>
+            <div class="infra-item-desc">A spacious hall for daily assembly, cultural events, seminars, and extracurricular programmes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<div class="timeline-section">
+  <div class="section-inner">
+    <div class="timeline-title-tag">Journey Through Time</div>
+    <h2 class="timeline-main-title">Milestones &amp; Achievements</h2>
+    <div class="timeline">
+      <!-- ===== REPLACE TIMELINE: Update years and events with actual school milestones ===== -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Foundation Year</div>
+        <div class="timeline-item-title">School Established</div>
+        <div class="timeline-item-desc">BHSS Boys Higher Secondary School Sanzipora was founded, beginning its journey as a beacon of education in the Shopian district.</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Early Years</div>
+        <div class="timeline-item-title">First Batch of Higher Secondary Students</div>
+        <div class="timeline-item-desc">The school launched its Higher Secondary programme, offering Science and Humanities streams for the first time.</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Major Milestone</div>
+        <div class="timeline-item-title">New Academic Block Inaugurated</div>
+        <div class="timeline-item-desc">A new academic block with state-of-the-art classrooms and science laboratories was inaugurated, expanding the school's capacity.</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Recognition</div>
+        <div class="timeline-item-title">Best School Award – J&amp;K Education Department</div>
+        <div class="timeline-item-desc">Recognised by the J&K Education Department for outstanding performance in board examinations and community engagement.</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Digital Era</div>
+        <div class="timeline-item-title">Smart Classrooms &amp; Computer Lab Launched</div>
+        <div class="timeline-item-desc">The school embraced digital education with the installation of smart classroom systems and an upgraded computer centre.</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Present Day</div>
+        <div class="timeline-item-title">Continued Excellence</div>
+        <div class="timeline-item-desc">BHSS Sanzipora continues to achieve district-level top results, with alumni excelling in NEET, JEE, and civil service examinations across the country.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo-wrap">
+        <div class="footer-logo">B</div>
+        <div class="footer-name">BHSS Sanzipora</div>
+      </div>
+      <p class="footer-desc">BHSS Boys Higher Secondary School Sanzipora — a premier educational institution committed to academic excellence and character building in Kashmir.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">f</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">W</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Academics</h4>
+      <ul>
+        <li><a href="#">Science Stream</a></li>
+        <li><a href="#">Commerce Stream</a></li>
+        <li><a href="#">Humanities Stream</a></li>
+        <li><a href="#">Exam Results</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <!-- ===== REPLACE CONTACT DETAILS ===== -->
+      <ul class="footer-contact">
+        <li><span>📍</span><span>Sanzipora, Shopian, J&amp;K – 192303</span></li>
+        <li><span>📞</span><span>+91 [Phone Number]</span></li>
+        <li><span>✉️</span><span>info@bhsssanzipora.edu.in</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 BHSS Boys Higher Secondary School Sanzipora.</span>
+    <span>Designed with ❤️ for BHSS Sanzipora</span>
+  </div>
+</footer>
+
+<button id="back-to-top">↑</button>
+
+<script>
+  window.addEventListener('load', () => { setTimeout(() => document.getElementById('loader').classList.add('hidden'), 900); });
+
+  const darkToggle = document.getElementById('darkToggle');
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  darkToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  darkToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    darkToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+  });
+
+  document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+  document.getElementById('menuClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => backToTop.classList.toggle('visible', window.scrollY > 400));
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>
