@@ -378,6 +378,20 @@
       min-height:150px;
       resize:vertical;
     }
+
+    .form.locked .field input,
+    .form.locked .field textarea{
+      background:#edf2f7;
+      color:var(--muted);
+      cursor:not-allowed;
+      pointer-events:none;
+    }
+    .form.locked button{
+      opacity:.6;
+      cursor:not-allowed;
+      pointer-events:none;
+    }
+
     .error{
       color:#d94b4b;
       font-size:.84rem;
@@ -397,6 +411,25 @@
     }
     [data-theme="dark"] .success{
       color:#8ef0b0;
+    }
+
+    .notice-banner{
+      padding:16px 18px;
+      border-radius:18px;
+      background:linear-gradient(135deg,rgba(232,178,74,.16),rgba(31,95,191,.08));
+      border:1px solid rgba(232,178,74,.25);
+      color:var(--text);
+      margin-top:18px;
+    }
+    .notice-banner strong{
+      display:block;
+      color:var(--navy);
+      margin-bottom:6px;
+      font-size:1rem;
+    }
+    .notice-banner p{
+      margin:0;
+      color:var(--muted);
     }
 
     .socials{
@@ -585,7 +618,6 @@
               <div class="info-icon">📍</div>
               <div>
                 <strong>Address</strong>
-                <!-- Replace this address -->
                 <span>BHSS Boys Higher Secondary School Sanzipora, Shopian, Jammu & Kashmir, India</span>
               </div>
             </div>
@@ -594,7 +626,6 @@
               <div class="info-icon">📞</div>
               <div>
                 <strong>Phone</strong>
-                <!-- Replace this phone number -->
                 <span>+91 00000 00000</span>
               </div>
             </div>
@@ -603,7 +634,6 @@
               <div class="info-icon">✉️</div>
               <div>
                 <strong>Email</strong>
-                <!-- Replace this email -->
                 <span>info@bhsssanzipora.edu.in</span>
               </div>
             </div>
@@ -617,7 +647,7 @@
             </div>
           </div>
 
-          <div class="alert">
+          <div class="notice-banner">
             <strong>Admissions closed</strong>
             <p>Admissions are currently closed. Please check back in March 2027 for the next admission update.</p>
           </div>
@@ -631,7 +661,6 @@
         </div>
 
         <div class="map card reveal">
-          <!-- Replace this Google Maps embed with your actual map location -->
           <iframe
             class="map-embed"
             src="https://www.google.com/maps?q=Sanzipora%20Shopian&output=embed"
@@ -649,40 +678,35 @@
       <div class="section-head reveal">
         <div>
           <div class="kicker">Message form</div>
-          <h2>Send a school inquiry</h2>
+          <h2>School inquiry</h2>
         </div>
-        <p class="lead">This form includes basic validation and will guide visitors before they submit.</p>
+        <p class="lead">The inquiry form is locked because admissions are closed.</p>
       </div>
 
       <div class="grid contact-grid">
         <div class="card pad reveal">
-          <form class="form" id="schoolForm" novalidate>
+          <form class="form locked" id="schoolForm" novalidate>
             <div class="field">
               <label for="name">Full name</label>
-              <input type="text" id="name" placeholder="Enter your full name" />
-              <div class="error" id="nameError">Please enter your name.</div>
+              <input type="text" id="name" placeholder="Enter your full name" readonly />
             </div>
 
             <div class="field">
               <label for="phone">Phone number</label>
-              <input type="tel" id="phone" placeholder="Enter your phone number" />
-              <div class="error" id="phoneError">Please enter a valid phone number.</div>
+              <input type="tel" id="phone" placeholder="Enter your phone number" readonly />
             </div>
 
             <div class="field">
               <label for="email">Email address</label>
-              <input type="email" id="email" placeholder="Enter your email address" />
-              <div class="error" id="emailError">Please enter a valid email address.</div>
+              <input type="email" id="email" placeholder="Enter your email address" readonly />
             </div>
 
             <div class="field">
               <label for="message">Message</label>
-              <textarea id="message" placeholder="Write your inquiry here"></textarea>
-              <div class="error" id="messageError">Please write your message.</div>
+              <textarea id="message" placeholder="Write your inquiry here" readonly></textarea>
             </div>
 
-            <button class="pill" type="submit" style="width:fit-content;background:linear-gradient(135deg,var(--blue),var(--blue-2));color:#fff;border:none;">Submit inquiry</button>
-            <div class="success" id="successMsg">Thank you. Your message has been prepared for submission.</div>
+            <button class="pill" type="button" style="width:fit-content;background:linear-gradient(135deg,var(--blue),var(--blue-2));color:#fff;border:none;">Admissions closed</button>
           </form>
         </div>
 
@@ -691,7 +715,7 @@
           <h2 style="margin-top:6px;">Admission notice</h2>
           <p class="lead">The school is not accepting admissions right now. If you are checking for the next admission cycle, return in March 2027 for the latest update.</p>
 
-          <div class="alert" style="margin-top:20px;">
+          <div class="notice-banner" style="margin-top:20px;">
             <strong>Important</strong>
             <p>For urgent communication, contact the school office during office hours. Replace the placeholder contact information with the official details when ready.</p>
           </div>
@@ -713,7 +737,6 @@
             </div>
           </div>
 
-          <!-- Replace this school description -->
           <p class="lead" style="margin-top:18px;">BHSS Boys Higher Secondary School Sanzipora is committed to academic discipline, student growth, and community trust.</p>
         </div>
       </div>
@@ -744,7 +767,6 @@
       </div>
       <div>
         <h4>Contact</h4>
-        <!-- Replace these contact details -->
         <p>Sanzipora, Shopian, Jammu & Kashmir</p>
         <p>Phone: +91 00000 00000</p>
         <p>Email: info@bhsssanzipora.edu.in</p>
@@ -787,38 +809,6 @@
       if (entry.isIntersecting) entry.target.classList.add('on');
     }), { threshold: 0.15 });
     revealEls.forEach(el => io.observe(el));
-
-    const form = document.getElementById('schoolForm');
-    const name = document.getElementById('name');
-    const phone = document.getElementById('phone');
-    const email = document.getElementById('email');
-    const message = document.getElementById('message');
-    const success = document.getElementById('successMsg');
-
-    const showError = (id, show) => {
-      const el = document.getElementById(id);
-      el.classList.toggle('show', show);
-    };
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const validName = name.value.trim().length > 2;
-      const validPhone = /^[0-9+\-\s]{7,15}$/.test(phone.value.trim());
-      const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
-      const validMessage = message.value.trim().length > 10;
-
-      showError('nameError', !validName);
-      showError('phoneError', !validPhone);
-      showError('emailError', !validEmail);
-      showError('messageError', !validMessage);
-
-      if (validName && validPhone && validEmail && validMessage) {
-        success.style.display = 'block';
-        form.reset();
-      } else {
-        success.style.display = 'none';
-      }
-    });
   </script>
 </body>
 </html>
